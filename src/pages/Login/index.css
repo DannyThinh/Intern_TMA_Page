@@ -1,0 +1,74 @@
+/* Global styles */
+:root {
+  --form-color: #dddddd;
+  --primary-color: #216ce3;
+  --background-color: #1c2636;
+  --default-font-size: 16px;
+  --default-font-wieght: 600;
+  --boder-textfield-color: #455e87;
+}
+
+/* Scoped styles for LoginForm */
+.login-form .subtitle1 {
+  color: var(--form-color);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.login-form .h5 {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: var(--default-font-wieght);
+}
+
+.login-form .place-holder-icon {
+  color: var(--form-color);
+  width: 24px;
+  height: 24px;
+}
+
+.login-form .place-holder-text {
+  color: var(--form-color);
+  font-size: var(--default-font-size);
+  font-weight: 400;
+}
+
+.login-form .primary-button {
+  color: var(--primary-color);
+  font-size: var(--default-font-size);
+  font-weight: var(--default-font-wieght);
+  padding: 0;
+  margin: 0;
+  text-transform: none;
+}
+
+.login-form .log-in-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: var(--default-font-size);
+  font-weight: var(--default-font-wieght);
+  text-transform: none;
+  margin-top: 24px;
+}
+
+.login-form .sign-up-text {
+  color: #efefef;
+  font-size: var(--default-font-size);
+  font-weight: 400;
+}
+
+/* Scoped styles for second-page */
+
+.second-page .title {
+  font-size: 40px;
+  font-weight: 500;
+  color: #f6f9fe;
+  margin-bottom: 16px;
+}
+
+.second-page .text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 99px;
+}
