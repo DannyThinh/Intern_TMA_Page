@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import Login from "./Login";
+import Login from "./login";
 import React from "react";
 
 export default function Router() {
