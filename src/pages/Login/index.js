@@ -1,9 +1,12 @@
 import React from "react";
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, useMediaQuery } from "@mui/material";
 import LoginForm from "./components/login_form";
-import AnimatedContent from "./components/second_page";
+import SliderPage from "./components/slider_hold_page";
 
 export default function Login() {
+  const isBelow900 = useMediaQuery("(max-width:900px)");
+  const isBelow1300 = useMediaQuery("(max-width:1300px)");
+
   return (
     <Grid
       container
@@ -12,11 +15,11 @@ export default function Login() {
         backgroundColor: "#1c2636",
       }}
     >
-      {/* Login Box (5 columns) */}
+      {/* Login Box (Responsive) */}
       <Grid
         item
         xs={12}
-        md={5}
+        md={isBelow1300 ? 6 : 5}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -33,20 +36,22 @@ export default function Login() {
           <LoginForm />
         </Paper>
       </Grid>
-      {/* Animated Content (7 columns) */}
-      <Grid
-        item
-        xs={12}
-        md={7}
-        style={{
-          background: "#216CE3",
-          position: "relative",
-          padding: "20px",
-          borderRadius: "120px 0 0 120px",
-        }}
-      >
-        <AnimatedContent />
-      </Grid>
+      {/* Animated Content (Responsive) */}
+      {!isBelow900 && (
+        <Grid
+          item
+          xs={12}
+          md={isBelow1300 ? 6 : 7}
+          style={{
+            background: "#216CE3",
+            position: "relative",
+            padding: "20px",
+            borderRadius: "120px 0 0 120px",
+          }}
+        >
+          <SliderPage />
+        </Grid>
+      )}
     </Grid>
   );
 }

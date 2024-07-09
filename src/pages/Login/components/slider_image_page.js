@@ -11,7 +11,7 @@ import image3 from "assets/image/Page3_login.png";
 import { FaMinus } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
-const AnimatedContent = () => {
+const SliderImage = () => {
   const [selectedImage, setSelectedImage] = useState("image1");
 
   const images = useMemo(
@@ -130,4 +130,4 @@ const AnimatedContent = () => {
   );
 };
 
-export default AnimatedContent;
+export default SliderImage;

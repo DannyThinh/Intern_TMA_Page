@@ -72,3 +72,20 @@
   color: #ffffff;
   margin-bottom: 99px;
 }
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.second-page .swiper-pagination-bullet {
+  background-color: #216ce3;
+}
