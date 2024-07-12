@@ -1,7 +1,8 @@
-import React from "react";
 import { Grid, Paper, useMediaQuery } from "@mui/material";
-import LoginForm from "./components/login_form";
-import SliderPage from "./components/slider_hold_page";
+
+import LoginForm from "./components/loginForm";
+import React from "react";
+import SliderPage from "./components/sliderHoldPage";
 
 export default function Login() {
   const isBelow900 = useMediaQuery("(max-width:900px)");

@@ -17,7 +17,7 @@ import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import LangueButton from "./langue_button";
+import LangueButton from "./langueButton";
 import TMAImage from "assets/image/TMA.png";
 import { loginAccount } from "app/authSlice";
 import { useNavigate } from "react-router-dom";
