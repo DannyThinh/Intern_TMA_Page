@@ -1,3 +1,5 @@
+import "../index.css";
+
 import {
   Box,
   Button,
@@ -10,12 +12,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import TMAImage from "assets/image/TMA.png";
 import { Email, Https } from "@mui/icons-material";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
-import "../index.css";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import LangueButton from "./langue_button";
+import TMAImage from "assets/image/TMA.png";
+import { loginAccount } from "app/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -23,6 +28,10 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [langue, setLangue] = useState("en");
 
+  const dispatch = useDispatch();
+  const authStatus = useSelector((state) => state.auth.status);
+  const authError = useSelector((state) => state.auth.error);
+  const navigate = useNavigate();
   const handleOptionChange = (event, newOption) => {
     if (newOption !== null) {
       setLangue(newOption);
@@ -30,6 +39,16 @@ export default function LoginForm() {
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const resultAction = await dispatch(
+      loginAccount({ username: email, password })
+    );
+    if (loginAccount.fulfilled.match(resultAction)) {
+      navigate("/home", { state: { user: resultAction.payload } });
+    }
+  };
 
   return (
     <Box textAlign="start" className="login-form">
@@ -43,10 +62,11 @@ export default function LoginForm() {
       <Typography className="h5" marginBottom="24px">
         Log In
       </Typography>
-      <Box component="form" action="">
+      <Box component="form" onSubmit={handleSubmit}>
         <FormGroup>
           <Typography className="subtitle1">Email</Typography>
           <TextField
+            required
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -88,6 +108,7 @@ export default function LoginForm() {
             Password
           </Typography>
           <TextField
+            required
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -106,9 +127,9 @@ export default function LoginForm() {
                     edge="end"
                   >
                     {!showPassword ? (
-                      <PiEyeClosedBold style={{ color: " white" }} />
+                      <PiEyeClosedBold style={{ color: "white" }} />
                     ) : (
-                      <PiEyeBold style={{ color: " white" }} />
+                      <PiEyeBold style={{ color: "white" }} />
                     )}
                   </IconButton>
                 </InputAdornment>
@@ -119,7 +140,6 @@ export default function LoginForm() {
                   fontSize: showPassword || !password ? "16px" : "30px",
                   letterSpacing: showPassword || !password ? "normal" : "8px",
                   height: "28px",
-                  borderColor: "red",
                 },
               },
             }}
@@ -185,9 +205,15 @@ export default function LoginForm() {
             className="log-in-button"
             fullWidth
             style={{ marginTop: "24px" }}
+            disabled={authStatus === "loading"}
           >
-            Log In
+            {authStatus === "loading" ? "Logging in..." : "Log In"}
           </Button>
+          {authStatus === "failed" && (
+            <Typography color="error" style={{ marginTop: "16px" }}>
+              {authError}
+            </Typography>
+          )}
           <Stack
             direction="row"
             style={{ marginTop: "24px" }}

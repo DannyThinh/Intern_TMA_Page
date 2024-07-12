@@ -1,8 +1,10 @@
 // ChoiceButton.js
+
+import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+
 import React from "react";
-import { ToggleButton, ToggleButtonGroup, Box } from "@mui/material";
-import viFlag from "assets/image/VN.png";
 import enFlag from "assets/image/EN.png";
+import viFlag from "assets/image/VN.png";
 
 const LangueButton = ({ value, onChange }) => {
   return (

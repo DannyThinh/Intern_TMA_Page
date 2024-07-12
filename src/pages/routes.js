@@ -1,6 +1,7 @@
-import { useRoutes } from "react-router-dom";
+import Home from "./home";
 import Login from "./login";
 import React from "react";
+import { useRoutes } from "react-router-dom";
 
 export default function Router() {
   const routes = useRoutes([
@@ -8,6 +9,10 @@ export default function Router() {
       path: "",
       element: <Login />,
       index: true,
+    },
+    {
+      path: "/home",
+      element: <Home />,
     },
   ]);
 
